@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Notes</title>
+    <link rel="stylesheet" href="popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span class="icon">🎙️</span>
+                <h1>AI Audio Note</h1>
+                <span class="version">v3.1</span>
+            </div>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Ready</span>
+            </div>
+        </header>
+
+        <!-- API Key Section -->
+        <section class="api-section glass-panel">
+            <div class="input-group">
+                <input id="apiKey" type="password" placeholder="Enter OpenAI API Key" autocomplete="off" />
+                <button id="saveKey" class="save-btn" title="Save Key">💾</button>
+                <button id="toggleKey" class="toggle-btn" title="Toggle visibility">👁️</button>
+            </div>
+            <p class="hint">Get your API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI
+                    Platform</a></p>
+        </section>
+
+        <!-- Recording Controls -->
+        <section class="controls-section">
+            <div class="button-grid">
+                <button id="startMic" class="control-btn primary">
+                    <span class="btn-icon">🎤</span>
+                    <span>Microphone</span>
+                </button>
+                <button id="tabRecord" class="control-btn secondary">
+                    <span class="btn-icon">🎧</span>
+                    <span>Tab Audio</span>
+                </button>
+                <button id="stopMic" class="control-btn danger" disabled>
+                    <span class="btn-icon">⏹</span>
+                    <span>Stop</span>
+                </button>
+            </div>
+            <div id="recordingInfo" class="recording-info hidden">
+                <div class="timer">
+                    <span class="timer-icon">⏱️</span>
+                    <span id="recordingTimer">00:00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Area with Tabs -->
+        <main class="content-area">
+            <div class="tabs">
+                <button class="tab-btn active" data-target="transcript">
+                    <span>📝</span> Transcript
+                </button>
+                <button class="tab-btn" data-target="summary">
+                    <span>📋</span> Summary
+                </button>
+            </div>
+
+            <div class="output-container glass-panel">
+                <div id="transcript" class="output-content active">
+                    <p class="placeholder">Your transcription will appear here...</p>
+                </div>
+                <div id="summary" class="output-content">
+                    <p class="placeholder">Summary will be generated automatically...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Export Actions -->
+        <footer class="actions glass-panel">
+            <button id="copyText" class="action-btn" title="Copy to clipboard">
+                <span>📋</span> Copy
+            </button>
+            <button id="exportTxt" class="action-btn" title="Export as TXT">
+                <span>📄</span> TXT
+            </button>
+            <button id="exportMd" class="action-btn" title="Export as Markdown">
+                <span>📝</span> MD
+            </button>
+            <button id="clearAll" class="action-btn danger" title="Clear all content">
+                <span>🗑️</span> Clear
+            </button>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
